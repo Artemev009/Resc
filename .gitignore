@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+!.env.example
+outputs/
+npm-debug.log*
+# Local research, organization material, and working notes are not part of the public web app.
+/База знаний/
+/Концепция и MVP/
+/Оргструктура РусГидро/
+/Платформа рабочих скиллов/
+/Цифровой двойник сотрудника/
+/СТАТУС_И_ПРОБЕЛЫ.md
+/AGENTS.md
