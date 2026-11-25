@@ -21,6 +21,30 @@ body:has(.shell){background:radial-gradient(ellipse at 62% 45%,#f3efff 0,transpa
 @media(min-width:901px) and (max-width:1100px){.page-art{opacity:.15;right:0}.page-heading-copy{max-width:75%}.skill-grid,.knowledge-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.activity-layout{grid-template-columns:1fr}}
 .page-art,.welcome-art{mix-blend-mode:multiply;mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 90%,transparent 100%);mask-composite:intersect}
+/* Catalog-only sizing: preserve the reference grid and hierarchy while easing visual density. */
+.shell[data-current-route="catalog"] .nav button{height:46px;padding:0 12px;font-size:14px}
+.shell[data-current-route="catalog"] .page-heading{min-height:56px}
+.shell[data-current-route="catalog"] .page-title{font-size:28px}
+.shell[data-current-route="catalog"] .sub{font-size:14px}
+.shell[data-current-route="catalog"] .page-heading>.button{margin-top:24px;padding:10px 16px;font-size:13px}
+.shell[data-current-route="catalog"] .catalog-tabs{gap:13px;margin-bottom:12px}
+.shell[data-current-route="catalog"] .catalog-tabs button{padding:7px 14px;font-size:13px;border-radius:20px}
+.shell[data-current-route="catalog"] .catalog-toolbar{gap:12px;margin-bottom:12px}
+.shell[data-current-route="catalog"] .search-field{height:44px;gap:11px;padding:0 17px;font-size:17px;border-radius:15px}
+.shell[data-current-route="catalog"] .search-field input{font-size:16px}
+.shell[data-current-route="catalog"] .select{padding:0 12px;font-size:13px;border-radius:12px}
+.shell[data-current-route="catalog"] .skill-grid{gap:13px}
+.shell[data-current-route="catalog"] .skill-card{height:222px;min-height:222px;padding:15px 17px;border-radius:20px}
+.shell[data-current-route="catalog"] .skill-glyph{width:50px;height:50px;border-radius:15px;font-size:25px}
+.shell[data-current-route="catalog"] .favorite{font-size:20px}
+.shell[data-current-route="catalog"] .skill-title{font-size:18px;line-height:1.22}
+.shell[data-current-route="catalog"] .skill-card .skill-title{padding-top:9px}
+.shell[data-current-route="catalog"] .skill-card p{font-size:14px;line-height:1.35}
+.shell[data-current-route="catalog"] .skill-card-bottom{font-size:12px}
+.shell[data-current-route="catalog"] .skill-card-bottom .badge{padding:4px 8px;font-size:10px}
+.shell[data-current-route="catalog"] .notice{font-size:12px;padding:12px 15px}
+@media (min-width:761px) and (max-width:1100px){.shell[data-current-route="catalog"] .skill-card{height:222px;min-height:222px}}
+@media (max-width:760px){.shell[data-current-route="catalog"] .skill-card{height:auto;min-height:190px}}
 @media(max-width:1400px){.shell{--sidebar-width:236px}.sidebar{padding:21px 14px 16px}.brand{font-size:20px;padding-bottom:25px}.nav{gap:5px}.nav button{height:53px;padding:0 14px;font-size:16px;border-radius:14px}.sidebar-user .user-text strong,.sidebar-user .user-text small{font-size:14px}.topbar{height:66px;padding-right:22px}.content{padding-left:26px;padding-right:22px}.page-heading{min-height:72px}.page-title{font-size:32px}.sub{font-size:16px}.page-heading>.button{margin-top:30px;font-size:15px;padding:12px 18px}.stats{gap:13px;margin:14px 0 18px}.stat{padding:16px;border-radius:19px}.stat-val{font-size:28px}.reference-kpis{gap:13px;margin-bottom:22px}.ref-kpi{height:106px;padding:14px;border-radius:20px}.ref-kpi small{font-size:14px}.ref-kpi strong{font-size:30px}.dashboard-middle{gap:18px;margin-bottom:24px}.dashboard-ai{height:300px;padding:22px 34px}.dashboard-ai h2{font-size:30px}.dashboard-ai p{font-size:16px;margin-bottom:20px}.dashboard-ai .button.light{height:51px;font-size:16px}.dashboard-quick{height:300px;padding:17px}.dashboard-quick h2{font-size:20px}.dashboard-quick button{height:47px;margin-bottom:9px;font-size:15px}.dashboard-recent{padding:17px}.dashboard-recent h2{font-size:20px}.skill-card{min-height:195px;padding:18px 20px}.skill-title{font-size:19px}.skill-card p{font-size:15px}.catalog-tabs button{font-size:14px;padding:10px 17px}.search-field{height:54px}.employee-card{min-height:122px}.profile-illustration{min-height:210px;max-height:210px}.workflow-card{padding:18px}.flow-canvas{min-height:365px}.flow-node{min-width:155px;min-height:105px}.flow-connector{width:38px;min-width:38px}.settings-grid .card{padding:20px}}
 @media(max-height:850px) and (min-width:1101px){.dashboard-welcome{height:82px}.dashboard-welcome h1{font-size:32px}.dashboard-welcome p{font-size:17px}.reference-kpis{margin-bottom:17px}.ref-kpi{height:94px}.dashboard-middle{margin-bottom:18px}.dashboard-ai,.dashboard-quick{height:270px}.dashboard-ai h2{font-size:27px;margin:6px 0 10px}.dashboard-ai p{margin-bottom:16px}.dashboard-ai .button.light{height:46px}.dashboard-quick h2{margin-bottom:10px}.dashboard-quick button{height:42px;margin-bottom:8px}.dashboard-recent{padding:14px}.recent-grid article{min-height:64px;padding:8px 11px}.skill-card{min-height:175px}.flow-canvas{min-height:320px}.workflow-card{padding:15px}}
 .knowledge-art{mix-blend-mode:multiply;mask-image:linear-gradient(90deg,transparent 0,#000 15%,#000 88%,transparent 100%),linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-composite:intersect}
@@ -112,3 +136,115 @@ body:has(.shell){background:radial-gradient(ellipse at 62% 45%,#f3efff 0,transpa
 @media(max-width:1100px){.skill-overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.skill-lower-grid{grid-template-columns:1fr}.skill-cover{min-height:180px!important}.skill-flow>div strong{font-size:12px}}
 @media(max-width:560px){.skill-tabs{gap:8px;margin:0 0 12px}.skill-tabs button{font-size:12px;padding:10px 5px}.skill-overview-grid{grid-template-columns:1fr 1fr;gap:9px}.skill-overview-grid>.card{min-height:180px;padding:12px}.skill-overview-grid h2,.skill-process h2,.skill-lower-grid h2{font-size:14px}.skill-cover{min-height:160px!important}.feature-line{font-size:11px;padding:5px 0}.skill-flow{align-items:stretch;gap:4px}.skill-flow>div{grid-template-columns:1fr;padding:7px}.skill-flow>div b{grid-row:auto}.skill-flow>i{font-size:12px}.skill-flow>div strong{font-size:10px}.skill-flow>div small{font-size:9px}.skill-facts small,.skill-facts strong{font-size:10px}}
 .preview-card{position:relative;overflow:hidden;align-items:flex-start;justify-content:flex-start;padding:28px 25px}.preview-card .preview-symbol,.preview-card h2,.preview-card p,.preview-card .preview-steps{position:relative;z-index:1;max-width:90%}.preview-card::after{content:"";position:absolute;right:-5px;bottom:0;width:160px;height:190px;background:url('/assets/reference-art/create-robot-clean.png') center bottom/contain no-repeat;mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-composite:intersect;opacity:.92}
+
+/* Site-wide compact scale: keep each approved layout intact while fitting more of it at 100% zoom. */
+@media (min-width: 901px) {
+  .shell { --sidebar-width: 224px; }
+  .sidebar { padding: 20px 14px 14px; }
+  .brand { font-size: 19px; padding-bottom: 22px; }
+  .nav { gap: 4px; }
+  .nav button { min-height: 45px; height: 45px; padding: 0 12px; font-size: 14px; border-radius: 13px; }
+  .sidebar-user { padding: 10px 8px; }
+  .sidebar-user .user-text strong, .sidebar-user .user-text small { font-size: 13px; }
+  .topbar { height: 62px; padding-right: 20px; }
+  .content { padding: 12px 22px 20px; }
+  .page-heading { min-height: 62px; }
+  .page-title { font-size: clamp(25px, 2vw, 30px); line-height: 1.15; }
+  .sub { font-size: 14px; line-height: 1.4; }
+  .page-heading > .button { margin-top: 22px; padding: 9px 15px; font-size: 13px; }
+  .button { min-height: 38px; padding: 8px 13px; font-size: 13px; border-radius: 12px; }
+  .card { border-radius: 19px; }
+  .section-heading { margin-bottom: 12px; }
+  .section-heading h2, .card h2 { font-size: 17px; }
+  .field label, .setting-line strong { font-size: 13px; }
+  .field input, .field select, .textarea, .select { min-height: 40px; padding: 9px 12px; font-size: 13px; border-radius: 12px; }
+  .textarea { min-height: 100px; }
+  .badge, .ai-chip { font-size: 11px; padding: 5px 9px; }
+  .stat { padding: 13px; border-radius: 16px; }
+  .stat-val { font-size: 25px; }
+  .reference-kpis { gap: 11px; margin: 12px 0 16px; }
+  .ref-kpi { height: 88px; padding: 12px; border-radius: 17px; }
+  .ref-kpi small { font-size: 12px; }
+  .ref-kpi strong { font-size: 25px; }
+  .dashboard-middle { gap: 15px; margin-bottom: 16px; }
+  .dashboard-ai, .dashboard-quick { height: 252px; }
+  .dashboard-ai { padding: 19px 25px; }
+  .dashboard-ai h2 { font-size: 25px; }
+  .dashboard-ai p { font-size: 14px; margin-bottom: 14px; }
+  .dashboard-ai .button.light { height: 42px; font-size: 14px; }
+  .dashboard-quick { padding: 14px; }
+  .dashboard-quick h2, .dashboard-recent h2 { font-size: 17px; }
+  .dashboard-quick button { height: 39px; margin-bottom: 7px; font-size: 13px; }
+  .dashboard-recent { padding: 14px; }
+  .recent-grid { gap: 10px; }
+  .recent-grid article { min-height: 58px; padding: 8px 10px; }
+  .skill-grid, .knowledge-grid { gap: 12px; }
+  .skill-card { min-height: 170px; padding: 15px 16px; border-radius: 18px; }
+  .skill-title { font-size: 17px; }
+  .skill-card p { font-size: 13px; }
+  .catalog-tabs { gap: 10px; }
+  .catalog-tabs button { padding: 7px 13px; font-size: 12px; }
+  .search-field { height: 43px; padding: 0 14px; font-size: 14px; }
+  .employee-card { min-height: 104px; padding: 12px 15px; }
+  .employee-avatar { width: 76px; height: 76px; }
+  .employee-card h2, .employee-card strong { font-size: 16px; }
+  .employee-card p, .employee-card small { font-size: 12px; }
+  .profile-illustration { min-height: 178px; max-height: 178px; }
+  .profile-grid, .employee-profile-grid { gap: 12px; }
+  .knowledge-hero { min-height: 126px; padding: 17px 20px; }
+  .folder-card { min-height: 82px; padding: 13px 15px; }
+  .workflow-card { padding: 15px; }
+  .flow-canvas { min-height: 295px; }
+  .flow-node { min-width: 132px; min-height: 88px; padding: 12px; }
+  .flow-node strong { font-size: 13px; }
+  .flow-node small { font-size: 11px; }
+  .flow-connector { width: 28px; min-width: 28px; }
+  .workflow-metrics { gap: 10px; }
+  .workflow-metrics article { min-height: 62px; padding: 10px; }
+  .workflow-metrics strong { font-size: 21px; }
+  .analytics-grid { gap: 12px; }
+  .bar-chart { min-height: 205px; }
+  .activity-layout { gap: 14px; }
+  .activity-row { min-height: 64px; padding: 10px 12px; }
+  .settings-grid { gap: 12px; }
+  .settings-grid .card { padding: 17px; border-radius: 18px; }
+  .wizard-progress { margin: 13px 0 18px; }
+  .wizard-progress > div { gap: 8px; font-size: 13px; }
+  .create-grid { gap: 14px; }
+  .create-form { padding: 17px; }
+  .create-visual { min-height: 108px; padding: 14px; }
+  .template-list { margin: 11px 0; }
+  .template-list button { padding: 7px 10px; font-size: 12px; }
+  .exact-landing > header { min-height: 72px; padding: 12px 28px; }
+  .exact-landing .exact-logo { font-size: 19px; }
+  .exact-landing nav { gap: clamp(18px, 3vw, 42px); }
+  .exact-landing nav button { font-size: 14px; }
+  .exact-landing main { padding: 22px 5.5% 18px; }
+  .exact-landing .landing-copy h1 { font-size: clamp(38px, 3.4vw, 47px); line-height: 1.12; }
+  .exact-landing .landing-copy p { font-size: 17px; line-height: 1.55; }
+  .exact-landing .landing-ctas button { min-height: 52px; padding: 12px 22px; font-size: 15px; }
+  .exact-landing footer button { min-height: 82px; padding: 12px 15px; border-radius: 20px; }
+}
+@media (min-width: 901px) and (max-width: 1400px) {
+  .shell { --sidebar-width: 210px; }
+  .sidebar { padding-left: 12px; padding-right: 12px; }
+  .content { padding-left: 18px; padding-right: 16px; }
+  .page-title { font-size: 27px; }
+  .dashboard-welcome { height: 72px; }
+  .dashboard-welcome h1 { font-size: 29px; }
+  .dashboard-welcome p { font-size: 15px; }
+  .dashboard-ai, .dashboard-quick { height: 230px; }
+  .dashboard-ai h2 { font-size: 22px; }
+  .dashboard-quick button { height: 36px; }
+  .flow-canvas { min-height: 270px; }
+  .exact-landing main { padding-left: 4.5%; padding-right: 4.5%; }
+  .exact-landing .landing-copy h1 { font-size: 39px; }
+  .exact-landing .landing-copy p { font-size: 15px; }
+  .exact-landing footer button { min-height: 74px; }
+}
+@media (min-width: 901px) and (max-width: 1400px) {
+  .dashboard-ai .ai-word { font-size: 55px; line-height: 1; }
+  .dashboard-ai h2 { margin: 4px 0 7px; font-size: 21px; }
+  .dashboard-ai p { margin-bottom: 10px; font-size: 13px; }
+  .dashboard-ai .button.light { height: 37px; min-height: 37px; padding: 7px 12px; font-size: 12px; }
+}
