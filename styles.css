@@ -49,7 +49,7 @@ body:has(.exact-landing){background:radial-gradient(circle at 52% 55%,#ede6ff 0,
 .exact-landing .landing-ctas button{height:74px;border-radius:19px;font-size:24px;padding:0 48px}
 .exact-landing .landing-ctas .exact-primary{background:linear-gradient(135deg,#8657ff,#5b2ef4);box-shadow:0 12px 22px #7a55d82b}
 .exact-landing .landing-ctas .exact-outline{padding:0 50px}
-.exact-landing .landing-original-art{width:570px;height:610px;top:33px;right:5px;z-index:1;background-image:url('/assets/landing-approved.png');background-size:1448px 1086px;background-position:-823px -189px;mix-blend-mode:normal;mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 96%,transparent 100%),linear-gradient(180deg,transparent 0,#000 5%,#000 95%,transparent 100%);mask-composite:intersect}
+.exact-landing .landing-original-art{width:570px;height:610px;top:33px;right:5px;z-index:1;background-image:url('assets/landing-approved.png');background-size:1448px 1086px;background-position:-823px -189px;mix-blend-mode:normal;mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 96%,transparent 100%),linear-gradient(180deg,transparent 0,#000 5%,#000 95%,transparent 100%);mask-composite:intersect}
 .exact-landing footer{position:relative;z-index:2;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:0 23px;padding:3px 0 64px}
 .exact-landing footer button{height:114px;padding:12px 23px;gap:16px;border-radius:25px;border:1px solid #fff;background:#ffffffb2;box-shadow:0 12px 25px #aba0da26}
 .exact-landing footer button i{display:grid;place-items:center;flex:none;width:67px;height:67px;padding:0;border-radius:20px;background:linear-gradient(150deg,#f5edff,#ded4ff);font-size:36px;color:#7439f4;box-shadow:inset 0 -3px 6px #beaaf744}
@@ -63,7 +63,7 @@ body:has(.exact-landing){background:radial-gradient(circle at 52% 55%,#ede6ff 0,
 @media(max-width:1300px){.exact-landing .landing-copy h1{font-size:44px;line-height:1.32;transform:scaleX(.88)}.exact-landing .landing-copy p{font-size:18px;max-width:590px}.exact-landing .landing-original-art{width:43%;mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 96%,transparent 100%),linear-gradient(180deg,transparent 0,#000 5%,#000 95%,transparent 100%)}}
 @media(max-width:900px){.exact-landing .landing-copy h1{font-size:40px;transform:none}.exact-landing .landing-copy p{font-size:17px}}
 @media(max-width:560px){.exact-landing .landing-copy h1{font-size:clamp(29px,8vw,39px)}.exact-landing .landing-copy p{font-size:14px}}
-.exact-landing .exact-logo i{width:58px;height:47px;border:0;border-radius:0;transform:none;box-shadow:none;background-image:url('/assets/landing-approved.png');background-size:1448px 1086px;background-position:-68px -79px;background-color:transparent}
+.exact-landing .exact-logo i{width:58px;height:47px;border:0;border-radius:0;transform:none;box-shadow:none;background-image:url('assets/landing-approved.png');background-size:1448px 1086px;background-position:-68px -79px;background-color:transparent}
 .exact-landing .exact-logo i:after{display:none}
 .exact-landing .landing-pill{padding-left:24px;padding-right:24px}
 .exact-landing .landing-copy h1{font-size:53px;line-height:1.225;transform:scaleX(.95);margin-bottom:34px}
@@ -72,7 +72,7 @@ body:has(.exact-landing){background:radial-gradient(circle at 52% 55%,#ede6ff 0,
 .exact-landing .landing-ctas .exact-outline{padding-left:46px;padding-right:46px}
 .exact-landing .landing-original-art{right:25px}
 .exact-landing footer{grid-template-columns:1.07fr 1.05fr .83fr 1.17fr 1.2fr;padding-bottom:60px}
-.exact-landing footer button i{color:transparent;background-image:url('/assets/landing-approved.png');background-size:1448px 1086px;background-color:transparent;box-shadow:none}
+.exact-landing footer button i{color:transparent;background-image:url('assets/landing-approved.png');background-size:1448px 1086px;background-color:transparent;box-shadow:none}
 .exact-landing footer button:nth-child(1) i{background-position:-81px -869px}
 .exact-landing footer button:nth-child(2) i{background-position:-348px -869px}
 .exact-landing footer button:nth-child(3) i{background-position:-609px -869px}
