@@ -1,9 +1,9 @@
 import OpenAI from 'openai';
 import { LLMProvider } from './LLMProvider.js';
-import { SKILL_ANALYSIS_SCHEMA } from './schemas.js';
+import { OFFER_REVIEW_SCHEMA, SKILL_ANALYSIS_SCHEMA } from './schemas.js';
 import { TOOLS } from '../skills/tools.js';
 
-import { ANALYSIS_INSTRUCTIONS, TWIN_INSTRUCTIONS } from './prompts.js';
+import { ANALYSIS_INSTRUCTIONS, OFFER_REVIEW_INSTRUCTIONS, TWIN_INSTRUCTIONS } from './prompts.js';
 
 export class OpenAIProvider extends LLMProvider {
   constructor() {
@@ -21,6 +21,20 @@ export class OpenAIProvider extends LLMProvider {
       instructions: ANALYSIS_INSTRUCTIONS,
       input: `Описание сотрудника (учебные данные):\n${description}\n\nСуществующие Skills (ID и названия):\n${JSON.stringify(existingSkills)}`,
       text: { format: { type: 'json_schema', name: 'skill_analysis', strict: true, schema: SKILL_ANALYSIS_SCHEMA } }
+    });
+    if (response.status !== 'completed') throw Object.assign(new Error('Incomplete model response.'), { code:'MODEL_INCOMPLETE' });
+    const refusal = response.output.flatMap(item=>item.content||[]).find(part=>part.type==='refusal');
+    if (refusal) throw Object.assign(new Error('Model refusal.'), { code:'MODEL_REFUSAL' });
+    if (!response.output_text) throw new Error('Модель не вернула структурированный ответ.');
+    return JSON.parse(response.output_text);
+  }
+  async reviewCommercialOffers(requirements, documents, skillContext, beforeRequest) {
+    if (!beforeRequest()) throw Object.assign(new Error('Daily AI request limit reached.'), { code:'LOCAL_DAILY_LIMIT' });
+    const response = await this.client.responses.create({
+      model: this.model, store: false, max_output_tokens: 3200,
+      instructions: OFFER_REVIEW_INSTRUCTIONS,
+      input: `Подтверждённый навык сотрудника:\n${JSON.stringify(skillContext)}\n\nТребования учебной закупки:\n${JSON.stringify(requirements)}\n\nТекст учебных предложений (каждый объект — отдельный файл):\n${JSON.stringify(documents)}`,
+      text: { format: { type: 'json_schema', name: 'offer_review', strict: true, schema: OFFER_REVIEW_SCHEMA } }
     });
     if (response.status !== 'completed') throw Object.assign(new Error('Incomplete model response.'), { code:'MODEL_INCOMPLETE' });
     const refusal = response.output.flatMap(item=>item.content||[]).find(part=>part.type==='refusal');

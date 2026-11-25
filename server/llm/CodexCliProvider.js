@@ -3,8 +3,8 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { LLMProvider } from './LLMProvider.js';
-import { SKILL_ANALYSIS_SCHEMA } from './schemas.js';
-import { ANALYSIS_INSTRUCTIONS, TWIN_INSTRUCTIONS } from './prompts.js';
+import { OFFER_REVIEW_SCHEMA, SKILL_ANALYSIS_SCHEMA } from './schemas.js';
+import { ANALYSIS_INSTRUCTIONS, OFFER_REVIEW_INSTRUCTIONS, TWIN_INSTRUCTIONS } from './prompts.js';
 import { TOOLS } from '../skills/tools.js';
 
 const PLAN_SCHEMA = {
@@ -87,14 +87,27 @@ export class CodexCliProvider extends LLMProvider {
     return this.run(`${ANALYSIS_INSTRUCTIONS}\n\nОписание сотрудника (только учебный текст):\n${description}\n\nСуществующие Skills (ID и названия):\n${JSON.stringify(existingSkills)}`, SKILL_ANALYSIS_SCHEMA);
   }
 
+  async reviewCommercialOffers(requirements, documents, skillContext, beforeRequest) {
+    if (!beforeRequest()) throw Object.assign(new Error('Daily AI request limit reached.'), { code: 'LOCAL_DAILY_LIMIT' });
+    return this.run(`${OFFER_REVIEW_INSTRUCTIONS}\n\nПодтверждённый навык сотрудника:\n${JSON.stringify(skillContext)}\n\nТребования учебной закупки:\n${JSON.stringify(requirements)}\n\nТекст учебных предложений (каждый объект — отдельный файл):\n${JSON.stringify(documents)}`, OFFER_REVIEW_SCHEMA);
+  }
+
   async respondWithTools(messages, approvedSkills, executeTool, beforeRequest) {
     if (!beforeRequest()) return { text: 'Достигнут дневной лимит AI-запросов.', operations: [] };
     const actionPlan = await this.run(`${TWIN_INSTRUCTIONS}\n\nВыбери действие только из перечня функций приложения ниже. Если не хватает входных данных, верни tool="none" и задай вопрос в поле text. Для вызова функции все аргументы должны быть дословно выведены из сообщений пользователя; не додумывай. Верни аргументы функции в argumentsJson как JSON-объект без поля skillId (его верни отдельно).\n\nДоступные функции и схемы:\n${JSON.stringify(TOOLS)}\n\nПодтверждённые демонстрационные Skills:\n${JSON.stringify(approvedSkills)}\n\nДиалог:\n${messages.slice(-12).map(m => `${m.role}: ${m.content}`).join('\n')}`, PLAN_SCHEMA);
     if (actionPlan.tool === 'none') return { text: actionPlan.text, operations: [] };
 
-    const skill = approvedSkills.find(item => item.id === actionPlan.skillId && item.approved === true && item.demo === true);
     const tool = TOOLS.find(item => item.name === actionPlan.tool);
-    if (!skill || !tool) return { text: 'Действие не выполнено: выбранный Skill не подтверждён или функция недоступна.', operations: [] };
+    const skillKindByTool = {
+      validate_purchase_request: 'purchase_check',
+      compare_commercial_offers: 'offer_compare',
+      create_supplier_comparison: 'supplier_table'
+    };
+    const requiredKind = skillKindByTool[actionPlan.tool];
+    if (!tool || !requiredKind) return { text: 'Действие не выполнено: выбранная функция недоступна.', operations: [] };
+    const eligibleSkills = approvedSkills.filter(item => item.kind === requiredKind && item.approved === true && item.demo === true);
+    const skill = eligibleSkills.find(item => item.id === actionPlan.skillId) || eligibleSkills[0];
+    if (!skill) return { text: 'Действие не выполнено: для этой функции нет подтверждённого демонстрационного навыка.', operations: [] };
     let args;
     try { args = JSON.parse(actionPlan.argumentsJson); }
     catch { return { text: 'Действие не выполнено: не удалось прочитать данные операции. Уточните запрос.', operations: [] }; }
